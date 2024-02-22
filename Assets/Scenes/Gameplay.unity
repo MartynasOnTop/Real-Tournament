@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028326, g: 0.22571333, b: 0.30692202, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -479,6 +479,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 50
   maxHp: 100
+  onDie:
+    m_PersistentCalls:
+      m_Calls: []
+  onDamage:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -939,6 +945,7 @@ GameObject:
   - component: {fileID: 1686232864}
   - component: {fileID: 1686232863}
   - component: {fileID: 1686232865}
+  - component: {fileID: 1686232866}
   m_Layer: 3
   m_Name: Bazooka
   m_TagString: Untagged
@@ -1026,12 +1033,51 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 816803087352359313, guid: 883ad39c11297447bb9c7e3eddee323b,
     type: 3}
-  ammo: 1000
-  maxAmmo: 1000
+  ammo: 5
+  maxAmmo: 5
   isReloading: 0
   isAutomatic: 1
-  fireInterval: 0.5
+  fireInterval: 0.1
   reloadTime: 2
+  bulletsPerShot: 1
+  spreadAngle: 5
+  clipAmmo: 7
+  clipSIze: 7
+  onRightCLick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1686232866}
+        m_TargetAssemblyTypeName: BurstMod, Assembly-CSharp
+        m_MethodName: Burst
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onShoot:
+    m_PersistentCalls:
+      m_Calls: []
+  onReload:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1686232866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1686232860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a2f1a2c5a93ee44f8efa14f43f0d728, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapon: {fileID: 1686232865}
+  isBursting: 0
 --- !u!1 &1813641388 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5242010300582068122, guid: f2e0b7ae4dae8cf44955bccd3512b213,
