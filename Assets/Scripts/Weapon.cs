@@ -11,10 +11,21 @@ public class Weapon : MonoBehaviour
     public float fireInterval = 0.1f;
     float fireCooldown;
     public float reloadTime = 2;
+    public bool isShotgun;
+    public int shotgunAmmo = 6;
+    public int ammoClip = 120;
+
 
     void Update()
     {
         // manual shooting
+        if (isShotgun && Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            for (int i = 0; i < shotgunAmmo; i++)
+            {
+                Instantiate(bulletPrefab, transform.position, transform.rotation);
+            }       
+        }
         if (!isAutomatic && Input.GetKeyDown(KeyCode.Mouse0))
         {
             Shoot();
@@ -34,6 +45,10 @@ public class Weapon : MonoBehaviour
 
     void Shoot()
     {
+        if (ammoClip <= 0 && ammo <= 0)
+        {
+            return;
+        }
         if(isReloading) return;
         if (ammo <= 0)
         {
@@ -59,6 +74,7 @@ public class Weapon : MonoBehaviour
         print("Reloaded!");
 
         isReloading = false;
+        ammoClip -= maxAmmo - ammo;
         ammo = maxAmmo;
     }
 }
