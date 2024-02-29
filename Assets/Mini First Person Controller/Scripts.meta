@@ -1,6 +1,13 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Mini First Person Controller/Scripts.meta
 guid: efcc2f8b689b7c547a119dac5cf66a98
 folderAsset: yes
+========
+guid: 0e49c304a8a375e4fb785571f1b582c2
+folderAsset: yes
+timeCreated: 1506153419
+licenseType: Store
+>>>>>>>> b62f43cdf7dc82a421e22badfb225004aba4caf4:Assets/Plugins/AsyncAwaitUtil/Source/Internal.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
