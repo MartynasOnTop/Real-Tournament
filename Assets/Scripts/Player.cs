@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class Player : MonoBehaviour
     public GameObject grabText;
     public Transform hand;
     public HUD hud;
+
+	public UnityEvent onGrab;
+	public UnityEvent onDrop;
 
     void Update()
     {
@@ -51,12 +55,15 @@ public class Player : MonoBehaviour
 	    if (Input.GetKeyDown(KeyCode.R))
 	    {
 		    weapon.Reload();
+			weapon.onReload.Invoke();
 	    }
     }
 
     void Grab(GameObject gun)
     {
 	    if (weapon != null) Drop();
+
+		onGrab.Invoke();
 
 	    weapon = gun.GetComponent<Weapon>();
 	    weapon.GetComponent<Rigidbody>().isKinematic = true;
@@ -73,6 +80,8 @@ public class Player : MonoBehaviour
     void Drop()
     {
 	    if(weapon == null) return;
+
+		onDrop.Invoke();
 
 	    weapon.GetComponent<Rigidbody>().isKinematic = false;
 	    weapon.transform.parent = null;
